@@ -1,0 +1,58 @@
+Generating all subsets: O(2^n)
+- method 1: recursion based
+
+// search subsets of {0,1,...n-1}
+void search(int k, vector<int> subset) {
+    if (n == k) {
+        // process subset
+    } else {
+        search(k+1, subset);
+        subset.push_back(k);
+        search(k+1, subset);
+        subset.pop_back();
+    }
+}
+
+- method two: binary/bit representation
+    - convention: last bit = element 0, second-last = elem 1, etc
+
+// search subsets of {0,1,...n-1}
+for (int b = 0; b < (1<<n); i++) {
+    vector<int> subset;
+    for (int i = 0; i < n i++) {
+        if (b & (1<<i)) {
+            subset.push_back(i);
+        }
+    }
+    // process subset
+}
+
+Generating permutations
+- method 1: recursion
+void search() {
+    if (permutation.size() == n) {
+        // process permutation
+    } else {
+        for (int i = 0; i < n; i++) {
+            if (chosen[i]) continue;
+            chosen[i] = true;
+            permutation.push_back(i);
+            search();
+            chosen[i] = false;
+            permutation.pop_back();
+        }
+    }
+}
+
+- method 2: C++ std library (next_permutation)
+vector<int> permutation;
+for (int i = 0; i < n; i++) permutation.push_back(i);
+
+do {
+    // process permutation
+} while (next_permutation(permutation.begin(), permutation.end()));
+
+
+Backtracking
+- start with empty solution and extend step by step
+- ex. n-queens problem
