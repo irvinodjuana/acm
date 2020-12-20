@@ -1,2 +1,2 @@
 # acm
-Solutions to ACM Practice Problems
+Solutions to Competitive Programming Practice Problems
