@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// shortened type names
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+
+// macros
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define REP(i, a, b) for (int i = a; i < b; i++)
+#define REPI(i, a, b) for (int i = a; i <= b; i++)
+
+void print_vector(vector<int> v) {
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+    cout << "\n";
+}
+
+void read_array(vector<int> & v, int n) {
+    int num;
+    while (n--) {
+        cin >> num;
+        v.push_back(num);
+    }
+}
+
+string solution(int w, int h, int n) {
+    int x = 1;
+
+    while (w % 2 == 0) {
+        w /= 2;
+        x *= 2;
+    }
+
+    while (h % 2 == 0) {
+        h /= 2;
+        x *= 2;
+    }
+
+    return (x >= n) ? "YES" : "NO";
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int tests;
+    cin >> tests;
+
+    REP(tt, 0, tests) {
+        // code here
+        int w, h, n;
+        cin >> w >> h >> n;
+        cout << solution(w, h, n) << endl;
+    }
+
+    
+    cout.flush();
+    return 0;
+}
