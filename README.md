@@ -7,7 +7,7 @@ Solutions to Competitive Programming Practice Problems
 2. `build.sh` - Compiles each of the problem files passed as an argument
 3. `run.sh` - Runs the compiled executable for a given problem/file
 4. `clean.sh` - Removes all compiled executables
-5. `teardown.sh` - Renames the workspace directory and move it to the archive directory
+5. `teardown.sh` - Renames the workspace directory and moves it to the archive directory
 
 Examples: 
 
