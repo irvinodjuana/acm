@@ -4,5 +4,5 @@ mkdir workspace
 cd workspace/
 
 for i; do 
-    cp ../templates/basic.cpp $i.cpp    
+    cp ../templates/basic_min.cpp $i.cpp    
 done
