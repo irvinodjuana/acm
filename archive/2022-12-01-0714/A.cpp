@@ -15,13 +15,46 @@ vector<int> read_vector(int n) {vector<int> v;int num;while (n--) {cin >> num;v.
 
 
 // solution code
+int soln(vector<int>& A) {
+    int n = A.size();
+    int res = 0;
 
+    for (int i = 0; i < n-1; i++) {
+        int j = i;
+        for (int k = i; k < n; k++) {
+            if (A[k] < A[j]) {
+                j = k;
+            }
+        }
+        res += (j-i+1);
+        int k = i;
+        while (k < j) {
+            swap(A[k++], A[j--]);
+        }
+    }
+
+    return res;
+}
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
     // code
+    int T;
+    cin >> T;
+    vector<int> output;
+
+    for (int t = 0; t < T; t++) {
+        int N;
+        cin >> N;
+        vector<int> A = read_vector(N);
+        output.push_back(soln(A));
+    }
+
+    for (int i = 0; i < T; i++) {
+        printf("Case #%d: %d\n", i+1, output[i]);
+    }
     
     cout.flush();
     return 0;

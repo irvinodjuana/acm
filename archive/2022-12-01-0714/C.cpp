@@ -18,13 +18,56 @@ int gcd(int a, int b);
 
 
 // solution code
+void reverse(vector<int>& A, int i, int j) {
+    while (i < j) {
+        swap(A[i++], A[j--]);
+    }
+}
 
+string soln(int N, int C) {
+    vector<int> A(N);
+    for (int i = 0; i < N; i++) {
+        A[i] = i+1;
+    }
+
+    C -= (N-1);
+    if (C < 0) return "IMPOSSIBLE";
+
+    for (int i = 0; i < N-1; i++) {
+        int r = min(C, N-1-i);
+        C -= r;
+        reverse(A, i, i+r);
+    }
+
+    if (C > 0) return "IMPOSSIBLE";
+
+    string s = to_string(A[0]);
+    for (int i = 1; i < N; i++) {
+        s += " ";
+        s += to_string(A[i]);
+    }
+
+    return s;
+}
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
     // code
+    int T;
+    cin >> T;
+    vector<string> output;
+    
+    for (int t = 0; t < T; t++) {
+        int N, C;
+        cin >> N >> C;
+        output.push_back(soln(N, C));
+    }
+
+    for (int i = 0; i < T; i++) {
+        printf("Case #%d: %s\n", i+1, output[i].c_str());
+    }
     
     cout.flush();
     return 0;

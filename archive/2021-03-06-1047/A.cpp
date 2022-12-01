@@ -22,6 +22,9 @@ int main() {
     cin.tie(0);
 
     // code
+    int x;
+    cin >> x;
+    printf("%d\n", x);
     
     cout.flush();
     return 0;

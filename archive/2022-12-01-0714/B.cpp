@@ -7,10 +7,10 @@ typedef vector<int> vi;
 typedef pair<int, int> pi;
 
 // common utils
-vector<int> read_vector(int n);
 vector<vector<char>> read_matrix(int n, int m);
 bool in_bounds(int i, int j, int n, int m);
 void print_vector(vector<int> v);
+vector<int> read_vector(int n);
 
 int choose(int n, int k);
 int factorial(int n);
@@ -18,13 +18,39 @@ int gcd(int a, int b);
 
 
 // solution code
+int soln(int X, int Y, string& s) {
+    int ans = 0;
+    int prev = s[0];
 
+    for (int i = 1; i < s.size(); i++) {
+        if (s[i] == '?') continue;
+        if (prev == 'C' && s[i] == 'J') ans += X;
+        if (prev == 'J' && s[i] == 'C') ans += Y;
+        prev = s[i];
+    }
+
+    return ans;
+}
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
     // code
+    int T;
+    cin >> T;
+    vector<int> output;
+
+    for (int t = 0; t < T; t++) {
+        int X, Y;
+        string s;
+        cin >> X >> Y >> s;
+        output.push_back(soln(X, Y, s));
+    }
+
+    for (int i = 0; i < T; i++) {
+        printf("Case #%d: %d\n", i+1, output[i]);
+    }
     
     cout.flush();
     return 0;

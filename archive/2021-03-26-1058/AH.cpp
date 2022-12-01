@@ -22,6 +22,38 @@ int main() {
     cin.tie(0);
 
     // code
+    int n;
+    cin >> n;
+
+    vector<int> nums;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        nums.push_back(x);
+    }
+
+    sort(nums.begin(), nums.end());
+
+    ull count = 0;
+
+    for (int r = 0; r < n; r++) {
+        for (int l = 0; l <= r-2; l++) {
+            int m = l+1;
+            while ((ull) nums[l] + (ull) nums[m] <= (ull) nums[r]) m++;
+
+            int n = r - m;
+
+            ull res = pow(2, n);
+            res -= 1;
+
+            if (n >= 1) {
+                count += res;
+            }
+        }
+    }
+
+    cout << count << "\n";
     
     cout.flush();
     return 0;

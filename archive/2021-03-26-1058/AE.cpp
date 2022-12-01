@@ -22,6 +22,27 @@ int main() {
     cin.tie(0);
 
     // code
+    int n;
+    cin >> n;
+    vector<int> x = read_vector(n);
+
+    int min_energy = INT_MAX;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i+1; j < n; j++) {
+            int energy = 0;
+            
+            for (int k = 0; k < n; k++) {
+                int dst1 = x[k] - x[i];
+                int dst2 = x[k] - x[j];
+                energy += min(dst1*dst1, dst2*dst2);
+            }
+
+            min_energy = min(min_energy, energy);
+        }
+    }
+
+    printf("%d\n", min_energy);
     
     cout.flush();
     return 0;

@@ -16,12 +16,52 @@ vector<int> read_vector(int n) {vector<int> v;int num;while (n--) {cin >> num;v.
 
 // solution code
 
+int count_bits(int n) {
+    int bits = 0;
+
+    while (n) {
+        bits += n & 1;
+        n >>= 1;
+    }
+
+    return bits;
+}
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
     // code
+    int n, k;
+    cin >> n >> k;
+    vector<int> nums;
+
+    for (int i = 0; i < n; i++) {
+        string s;
+        cin >> s;
+        int x = 0;
+        for (char c : s) {
+            x <<= 1;
+            if (c == 'T') {
+                x |= 1;
+            }
+        }
+        nums.push_back(x);
+    }
+
+    int minval = k;
+
+    for (int test = 0; test < (2 << k); test++) {
+        int maxerr = 0;
+
+        for (int x : nums) {
+            maxerr = max(maxerr, count_bits(test ^ x));
+        }
+
+        minval = min(minval, maxerr);
+    }
+
+    printf("%d\n", k - minval);
     
     cout.flush();
     return 0;

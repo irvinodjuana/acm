@@ -22,6 +22,20 @@ int main() {
     cin.tie(0);
 
     // code
+    int n, k;
+    cin >> n >> k;
+    int sum = 0;
+
+    for (int i = 0; i < k; i++) {
+        int x;
+        cin >> x;
+        sum += x;
+    }
+
+    double minval = (1.0 * (n-k) * (-3) + sum) / n;
+    double maxval = (1.0 * (n-k) * (3) + sum) / n;
+
+    printf("%f %f\n", minval, maxval);
     
     cout.flush();
     return 0;

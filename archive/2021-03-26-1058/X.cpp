@@ -22,6 +22,35 @@ int main() {
     cin.tie(0);
 
     // code
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    int j = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (j >= s.size()) break;
+
+        if (i >= 0 && i <= 9) {
+            string s = "" + s[j];
+            j++; 
+        } else if (i >= 10 && i <= 99) {
+            string s = "" + s[j] + s[j+1];
+            j += 2;
+        } else {
+            string s = "" + s[j] + s[j+1] + s[j+2];
+            j += 3; 
+        }
+
+        if (stoi(s) != i) {
+            printf("%d\n", i);
+            return 0;
+        }
+    }
+
+    printf("%d\n", n);
+    
     
     cout.flush();
     return 0;

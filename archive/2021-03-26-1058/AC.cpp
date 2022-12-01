@@ -22,6 +22,23 @@ int main() {
     cin.tie(0);
 
     // code
+    string s;
+    cin >> s;
+
+    bitset<26> chars;
+
+    for (char c : s) {
+        int idx = c - 'a';
+        
+        if (chars[idx]) {
+            printf("0\n");
+            return 0;
+        }
+
+        chars[idx] = true;
+    }
+
+    printf("1\n");
     
     cout.flush();
     return 0;
